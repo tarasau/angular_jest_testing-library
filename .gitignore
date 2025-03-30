@@ -1,4 +1,10 @@
 node_modules
 coverage
 .angular
+.cursor
 dist
+*storybook.log
+package-lock.json
+.storybook
+base-components/.storybook
+base-components/node_modules

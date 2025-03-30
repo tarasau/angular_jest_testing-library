@@ -3,6 +3,7 @@ import { CounterService } from '../../services/counter.service';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { baseButtonComponent } from 'base-components';
 
 interface PersonForm {
   firstName: string;
@@ -13,14 +14,32 @@ interface PersonForm {
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, baseButtonComponent],
   template: `
     <div class="counter-container">
       <h2>Counter: {{ counterService.currentCount() }}</h2>
       <div class="button-group">
-        <button (click)="counterService.increment()" data-testid="increment-button">Increment</button>
-        <button (click)="counterService.decrement()" data-testid="decrement-button">Decrement</button>
-        <button (click)="counterService.reset()" data-testid="reset-button">Reset</button>
+        <base-button 
+          color="primary" 
+          size="large"
+          (click)="counterService.increment()" 
+          data-testid="increment-button">
+          Increment
+        </base-button>
+        <base-button 
+          color="warn" 
+          size="medium"
+          (click)="counterService.decrement()" 
+          data-testid="decrement-button">
+          Decrement
+        </base-button>
+        <base-button 
+          color="accent" 
+          size="small"
+          (click)="counterService.reset()" 
+          data-testid="reset-button">
+          Reset
+        </base-button>
       </div>
 
       <form [formGroup]="formGroup" class="forms-container" role="form">
@@ -77,15 +96,15 @@ interface PersonForm {
                 role="spinbutton"
               >
             </div>
-            <button 
-              type="button"
+            <base-button 
+              color="primary"
+              size="large"
               (click)="onSubmitForm(i)"
               [disabled]="!personForm.valid"
               attr.data-testid="submit-button-{{i}}"
-              class="submit-button"
               [attr.aria-label]="'Submit Person ' + (i + 1)">
               Submit Person {{i + 1}}
-            </button>
+            </base-button>
           </div>
         </div>
       </form>

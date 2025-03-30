@@ -1,0 +1,19 @@
+{
+  "name": "base-components",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ng build base-components",
+    "build:prod": "ng build base-components --configuration production",
+    "test": "ng test base-components",
+    "storybook": "ng run base-components:storybook"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/material": "^19.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

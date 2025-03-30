@@ -1,0 +1,10 @@
+{
+  "/storybook": {
+    "target": "http://localhost:6006",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/storybook": ""
+    }
+  }
+} 

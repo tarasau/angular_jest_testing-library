@@ -1,0 +1,428 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "baseButtonComponent",
+            "id": "component-baseButtonComponent-4dd240328696a22e310c3ee98583691e98d745e837e152489913a2ed6d735d822d1fcdf684ba4ffa1e4a192f2cc905d62349a5fca40a734fae9722a4de706a96",
+            "file": "base-components/src/lib/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "base-button",
+            "styleUrls": [],
+            "styles": [
+                "\n    .base-button {\n      min-width: 120px;\n      font-weight: 500;\n      letter-spacing: 0.5px;\n      transition: all 0.3s ease;\n      text-transform: uppercase;\n    }\n\n    .base-button:not(:disabled):hover {\n      transform: translateY(-1px);\n      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    }\n\n    .base-button:not(:disabled):active {\n      transform: translateY(0);\n      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n    }\n\n    /* Custom color styles */\n    .base-button.primary {\n      background-color: var(--primary-color, #1976d2);\n      color: var(--primary-contrast, white);\n    }\n\n    .base-button.accent {\n      background-color: var(--accent-color, #ff4081);\n      color: var(--accent-contrast, white);\n    }\n\n    .base-button.warn {\n      background-color: var(--warn-color, #f44336);\n      color: var(--warn-contrast, white);\n    }\n\n    /* Disabled state */\n    .base-button:disabled {\n      opacity: 0.6;\n      cursor: not-allowed;\n      background-color: #cccccc !important;\n      color: #666666 !important;\n      box-shadow: none !important;\n      transform: none !important;\n    }\n\n    /* Size variations */\n    .base-button.small {\n      padding: 4px 8px;\n      font-size: 12px;\n      min-width: 80px;\n    }\n\n    .base-button.large {\n      padding: 12px 24px;\n      font-size: 16px;\n      min-width: 160px;\n    }\n\n    /* Animation for state changes */\n    @keyframes ripple {\n      0% {\n        transform: scale(1);\n        opacity: 0.4;\n      }\n      100% {\n        transform: scale(2);\n        opacity: 0;\n      }\n    }\n\n    .base-button:not(:disabled)::after {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      background: currentColor;\n      border-radius: inherit;\n      opacity: 0;\n      pointer-events: none;\n    }\n\n    .base-button:not(:disabled):active::after {\n      animation: ripple 0.4s ease-out;\n    }\n  "
+            ],
+            "template": "<button\n  mat-raised-button\n  [color]=\"color()\"\n  [disabled]=\"disabled()\"\n  [ngClass]=\"buttonClasses()\"\n  class=\"base-button\">\n  <ng-content></ng-content>\n</button>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 110,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "buttonClasses",
+                    "defaultValue": "computed(() => ({\n    'primary': this.color() === 'primary',\n    'accent': this.color() === 'accent',\n    'warn': this.color() === 'warn',\n    'small': this.size() === 'small',\n    'large': this.size() === 'large'\n  }))",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 114,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "input<'primary' | 'accent' | 'warn'>('primary')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 109,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 110,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "input<'small' | 'medium' | 'large'>('medium')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 111,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, computed, input } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'base-button',\n  standalone: true,\n  imports: [CommonModule, MatButtonModule],\n  template: `\n    <button \n      mat-raised-button \n      [color]=\"color()\"\n      [disabled]=\"disabled()\"\n      [ngClass]=\"buttonClasses()\"\n      class=\"base-button\">\n      <ng-content></ng-content>\n    </button>\n  `,\n  styles: [`\n    .base-button {\n      min-width: 120px;\n      font-weight: 500;\n      letter-spacing: 0.5px;\n      transition: all 0.3s ease;\n      text-transform: uppercase;\n    }\n\n    .base-button:not(:disabled):hover {\n      transform: translateY(-1px);\n      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    }\n\n    .base-button:not(:disabled):active {\n      transform: translateY(0);\n      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n    }\n\n    /* Custom color styles */\n    .base-button.primary {\n      background-color: var(--primary-color, #1976d2);\n      color: var(--primary-contrast, white);\n    }\n\n    .base-button.accent {\n      background-color: var(--accent-color, #ff4081);\n      color: var(--accent-contrast, white);\n    }\n\n    .base-button.warn {\n      background-color: var(--warn-color, #f44336);\n      color: var(--warn-contrast, white);\n    }\n\n    /* Disabled state */\n    .base-button:disabled {\n      opacity: 0.6;\n      cursor: not-allowed;\n      background-color: #cccccc !important;\n      color: #666666 !important;\n      box-shadow: none !important;\n      transform: none !important;\n    }\n\n    /* Size variations */\n    .base-button.small {\n      padding: 4px 8px;\n      font-size: 12px;\n      min-width: 80px;\n    }\n\n    .base-button.large {\n      padding: 12px 24px;\n      font-size: 16px;\n      min-width: 160px;\n    }\n\n    /* Animation for state changes */\n    @keyframes ripple {\n      0% {\n        transform: scale(1);\n        opacity: 0.4;\n      }\n      100% {\n        transform: scale(2);\n        opacity: 0;\n      }\n    }\n\n    .base-button:not(:disabled)::after {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      background: currentColor;\n      border-radius: inherit;\n      opacity: 0;\n      pointer-events: none;\n    }\n\n    .base-button:not(:disabled):active::after {\n      animation: ripple 0.4s ease-out;\n    }\n  `]\n})\nexport class baseButtonComponent {\n  // Input signals\n  readonly color = input<'primary' | 'accent' | 'warn'>('primary');\n  readonly disabled = input<boolean>(false);\n  readonly size = input<'small' | 'medium' | 'large'>('medium');\n\n  // Computed signal for dynamic classes\n  readonly buttonClasses = computed(() => ({\n    'primary': this.color() === 'primary',\n    'accent': this.color() === 'accent',\n    'warn': this.color() === 'warn',\n    'small': this.size() === 'small',\n    'large': this.size() === 'large'\n  }));\n} ",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .base-button {\n      min-width: 120px;\n      font-weight: 500;\n      letter-spacing: 0.5px;\n      transition: all 0.3s ease;\n      text-transform: uppercase;\n    }\n\n    .base-button:not(:disabled):hover {\n      transform: translateY(-1px);\n      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    }\n\n    .base-button:not(:disabled):active {\n      transform: translateY(0);\n      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n    }\n\n    /* Custom color styles */\n    .base-button.primary {\n      background-color: var(--primary-color, #1976d2);\n      color: var(--primary-contrast, white);\n    }\n\n    .base-button.accent {\n      background-color: var(--accent-color, #ff4081);\n      color: var(--accent-contrast, white);\n    }\n\n    .base-button.warn {\n      background-color: var(--warn-color, #f44336);\n      color: var(--warn-contrast, white);\n    }\n\n    /* Disabled state */\n    .base-button:disabled {\n      opacity: 0.6;\n      cursor: not-allowed;\n      background-color: #cccccc !important;\n      color: #666666 !important;\n      box-shadow: none !important;\n      transform: none !important;\n    }\n\n    /* Size variations */\n    .base-button.small {\n      padding: 4px 8px;\n      font-size: 12px;\n      min-width: 80px;\n    }\n\n    .base-button.large {\n      padding: 12px 24px;\n      font-size: 16px;\n      min-width: 160px;\n    }\n\n    /* Animation for state changes */\n    @keyframes ripple {\n      0% {\n        transform: scale(1);\n        opacity: 0.4;\n      }\n      100% {\n        transform: scale(2);\n        opacity: 0;\n      }\n    }\n\n    .base-button:not(:disabled)::after {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      background: currentColor;\n      border-radius: inherit;\n      opacity: 0;\n      pointer-events: none;\n    }\n\n    .base-button:not(:disabled):active::after {\n      animation: ripple 0.4s ease-out;\n    }\n  \n",
+            "extends": []
+        },
+        {
+            "name": "baseComponentsComponent",
+            "id": "component-baseComponentsComponent-fc6e19116280bfc13c2567d73972c28f57b48fdcedf3858d8194ee572a9ef4e492252a947e49dad20f231ff7704e2b1a541b49c499af0d1d26ec3c9ba5b7d0ca",
+            "file": "base-components/src/lib/artus-components.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-base-components",
+            "styleUrls": [],
+            "styles": [
+                ""
+            ],
+            "template": "<p>\n  base-components works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'lib-base-components',\n  imports: [],\n  template: `\n    <p>\n      base-components works!\n    </p>\n  `,\n  styles: ``\n})\nexport class baseComponentsComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n",
+            "extends": []
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Accent",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "base-components/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    color: 'accent'\n  },\n  render: (args) => ({\n    props: args,\n    template: `<base-button [color]=\"color\">Accent Button</base-button>`\n  })\n}"
+            },
+            {
+                "name": "config",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "base-components/.storybook/main.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StorybookConfig",
+                "defaultValue": "{\n  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],\n  addons: ['@storybook/addon-essentials'],\n  framework: {\n    name: '@storybook/angular',\n    options: {}\n  }\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "base-components/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<baseButtonComponent>",
+                "defaultValue": "{\n  title: 'Components/Button',\n  component: baseButtonComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'accent', 'warn'],\n      description: 'The color of the button'\n    }\n  }\n}"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "base-components/.storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Preview",
+                "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: '^on[A-Z].*' },\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "base-components/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    color: 'primary'\n  },\n  render: (args) => ({\n    props: args,\n    template: `<base-button [color]=\"color\">Primary Button</base-button>`\n  })\n}"
+            },
+            {
+                "name": "Warn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "base-components/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    color: 'warn'\n  },\n  render: (args) => ({\n    props: args,\n    template: `<base-button [color]=\"color\">Warn Button</base-button>`\n  })\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<baseButtonComponent>",
+                "file": "base-components/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "base-components/src/lib/button/button.component.stories.ts": [
+                {
+                    "name": "Accent",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "base-components/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    color: 'accent'\n  },\n  render: (args) => ({\n    props: args,\n    template: `<base-button [color]=\"color\">Accent Button</base-button>`\n  })\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "base-components/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<baseButtonComponent>",
+                    "defaultValue": "{\n  title: 'Components/Button',\n  component: baseButtonComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    color: {\n      control: 'select',\n      options: ['primary', 'accent', 'warn'],\n      description: 'The color of the button'\n    }\n  }\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "base-components/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    color: 'primary'\n  },\n  render: (args) => ({\n    props: args,\n    template: `<base-button [color]=\"color\">Primary Button</base-button>`\n  })\n}"
+                },
+                {
+                    "name": "Warn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "base-components/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    color: 'warn'\n  },\n  render: (args) => ({\n    props: args,\n    template: `<base-button [color]=\"color\">Warn Button</base-button>`\n  })\n}"
+                }
+            ],
+            "base-components/.storybook/main.ts": [
+                {
+                    "name": "config",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "base-components/.storybook/main.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StorybookConfig",
+                    "defaultValue": "{\n  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],\n  addons: ['@storybook/addon-essentials'],\n  framework: {\n    name: '@storybook/angular',\n    options: {}\n  }\n}"
+                }
+            ],
+            "base-components/.storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "base-components/.storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Preview",
+                    "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: '^on[A-Z].*' },\n    controls: {\n      matchers: {\n       color: /(background|color)$/i,\n       date: /Date$/i,\n      },\n    },\n  },\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "base-components/src/lib/button/button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<baseButtonComponent>",
+                    "file": "base-components/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "base-components/.storybook/main.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "config",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/.storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/artus-components.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "baseComponentsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Accent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Warn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/button/button.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "base-components/src/lib/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "baseButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            }
+        ]
+    }
+}
